@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Market Data Service | Make Marketing Easy Online</title>
+
+		<!-- Bootstrap CSS -->
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+		<link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css" rel="stylesheet">
+		<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<style>
+		body {
+			background-color: #f7f7f7;
+		}
+
+		.navbar, footer {
+			background-color: #355694;
+			margin-bottom: 0;
+			border: none;
+			border-radius: 0;
+		}
+
+		.navbar {
+			height: 100px;
+		}
+
+		footer {
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		footer:after {
+			background-color: #355694;
+		}
+
+		.top-desc-text {
+			padding-top: 35px !important;
+		}
+
+		.white-text {
+			color: #fff !important;
+		}
+
+		.centered-text {
+			text-align: center;
+		}
+
+		.banner-top {
+			background-color: #e1ba46;
+			padding-top: 50px;
+			padding-bottom: 75px;
+		}
+
+		.custom-btn {
+			padding: 10px 20px;
+			width: 100%;
+			text-align: center;
+			border: 1px solid #fff;
+			border-radius: 5px;
+			color: #fff;
+
+			-webkit-transition: .5s;
+			-moz-transition: .5s;
+			-ms-transition: .5s;
+			-o-transition: .5s;
+			transition: .5s; /* Transition time when hover */
+		}
+
+		.custom-btn:hover {
+			background-color: #fff;
+			color: #333333;
+		}
+
+		.btn-yellow {
+			background-color: #e1ba46;
+			
+		}
+
+		.btn-coffee {
+			background-color: #9a7e0a;
+		}
+
+		.btn-blue {
+			background-color: #355694;
+		}
+		
+		.btn-black {
+			background-color: #333333;
+		}
+
+		.element-hidden {
+			display: none;
+		}
+
+		.element-invisible {
+			visibility: hidden;
+		}
+
+		.option-1-div, .option-2-div, .option-3-div {
+			margin-top: 25px;
+			margin-bottom: 25px;
+		}
+		</style>
+		
+	</head>
+	<body class="animated fadeIn">
+		<div class="container">
+			<div class="row">
+				<p><strong>Past event set IDs: </strong><span id="id-list"></span></p>
+			</div>
+		</div>
+		
+		<!-- navbar start -->
+		<nav class="navbar navbar-default" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/9322ass1App"><h2 class="white-text">Market Data Service</h2></a>
+			</div>
+		
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="white-text top-desc-text">Created for cs9322 assignment1 use</a></li>
+					
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</nav><!-- navbar end -->
+
+		<div id="main" class="banner-top animated">
+			<div class="container">
+				<div class="row">
+					<h1 class="white-text centered-text animated fadeInDown">Make your marketing easier.</h1>
+					<h3 class="white-text centered-text animated fadeInDown">Our market data service supports multiple options including:</h3>
+					<div class="row" style="margin-top: 35px; margin-bottom: 20px;">
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 animated fadeInLeftBig" style="animation-delay: 0.2s">
+							<div class="white-text centered-text"><i class="fa fa-arrow-up fa-3x"></i>&nbsp;<i class="fa fa-arrow-down fa-3x"></i></div>
+							<h4 class="white-text centered-text">Import, convert and download.</h4>
+
+							<ul>
+								<li class="white-text">Import your market data</li>
+								<li class="white-text">Convert the currency to your currency</li>
+								<li class="white-text">Get your file by a single click</li>
+							</ul>
+							
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 animated fadeIn" style="animation-delay: 0.4s">
+							<div class="white-text centered-text"><i class="fa fa-arrow-right fa-3x"></i>&nbsp;<i class="fa fa-sticky-note-o fa-3x"></i></div>
+							<h4 class="white-text centered-text">Import, then summary.</h4>
+							<ul>
+								<li class="white-text">Import your market data</li>
+								<li class="white-text">Get a summary on screen</li>
+							</ul>
+							
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 animated fadeInRightBig" style="animation-delay: 0.2s;">
+							<div class="white-text centered-text"><i class="fa fa-refresh fa-3x"></i>&nbsp;<i class="fa fa-book fa-3x"></i></div>
+							<h4 class="white-text centered-text">Convert, then summary.</h4>
+							<ul>
+								<li class="white-text">Convert your market data to expected currency</li>
+								<li class="white-text">Get a summary on screen</li>
+							</ul>
+							
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 animated bounceIn" style="animation-delay: 0.5s;">
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<a id="importConvertDownloadLink" href="#importConvertDownload">
+									<div class="custom-btn btn-blue">Try it!</div>
+								</a>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								
+							</div>
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 animated bounceIn" style="animation-delay: 0.5s;">
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<a id="importSummaryLink" href="#importSummary">
+									<div class="custom-btn btn-blue">Try it!</div>
+								</a>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								
+							</div>
+						</div>
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 animated bounceIn" style="animation-delay: 0.5s;">
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<a id="convertSummaryLink" href="#convertSummary">
+									<div class="custom-btn btn-blue">Try it!</div>
+								</a>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<h2 class="white-text centered-text animated fadeIn" style="animation-delay: 0.7s;">Key features of the services</h2>
+						<h4 class="white-text centered-text animated fadeIn" style="animation-delay: 0.7s;">Easy to use by few clicks.</h4>
+						<h4 class="white-text centered-text animated fadeIn" style="animation-delay: 0.7s;">Easy to get results.</h4>
+						<h4 class="white-text centered-text animated fadeIn" style="animation-delay: 0.7s;">Easy to integrate into your own sites or apps.</h4>
+						<div style="margin-top: 25px;" class="animated bounceIn" style="animation-delay: 1s;">
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+								
+							</div>
+							<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+								<a id="seeDoc" href="/9322ass1Client"><div class="custom-btn btn-black">For Developers</div></a>
+							</div>
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="importConvertDownload" class="option-1-div element-hidden animated">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<div class="row">
+							<form id="optOneForm" action="importConvertDownload" method="POST" role="form">
+								<legend class="centered-text">Import, convert and download.</legend>
+							
+								<div class="form-group">
+									<label for="">Security code</label>
+									<input name="sec" type="text" class="form-control" id="" placeholder="Security code..." required="required">
+								</div>
+							
+								<div class="form-group">
+									<label for="">Start date</label>
+									<input type="date" name="startDate" id="input" class="form-control" value="" required="required" title="">
+								</div>
+	
+								<div class="form-group">
+									<label for="">End date</label>
+									<input type="date" name="endDate" id="input" class="form-control" value="" required="required" title="">
+								</div>
+	
+								<div class="form-group">
+									<label for="">Data source URL</label>
+									<input type="text" name="dataSourceURL" id="input" class="form-control" placeholder="http://...." required="required" title="">
+								</div>
+	
+								<div class="form-group">
+									<label for="">Target currency</label>
+									<input name="targetCurrency" type="text" class="form-control" id="" placeholder="Target currency..." required="required">
+								</div>
+	
+								<div class="form-group">
+									<label for="">File type</label>
+									<select name="fileType" id="inputFileType" class="form-control" required="required">
+										<option value="CSV" selected="selected">CSV</option>
+										<option value="HTML">HTML</option>
+										<option value="XML">XML</option>
+									</select>
+								</div>
+							
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									<a id="opt1-return" href="#main"><h5><i class="fa fa-arrow-left"></i> Return Home</h5></a>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: right;">
+									<button id="importConvDownSubmit" type="submit" class="btn btn-primary">Submit</button>
+									<input type="reset" value="Reset" class="btn btn-danger">
+								</div>
+								
+							</form>
+						</div>
+						<div id="optionOneSuccess" class="row element-hidden animated">
+							<h2 class="text-success centered-text">Congratulations! Your file is ready.</h2>
+							<div class="col-xs-3"></div>
+							<div class="col-xs-6">
+								<a id="file-link"><div class="custom-btn btn-blue">Download file</div></a>
+							</div>
+							<div class="col-xs-3"></div>
+						</div>
+						<div id="optionOneFailed" class="row element-hidden animated">
+							<h2 class="text-danger centered-text">Oops! Something wrong.</h2>
+							<h5 id="optOneErrMsg"></h5>
+						</div>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="importSummary" class="option-2-div element-hidden animated">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<div class="row">
+							<form id="optTwoForm" action="importSummary" method="POST" role="form">
+								<legend class="centered-text">Import and summary.</legend>
+							
+								<div class="form-group">
+									<label for="">Security code</label>
+									<input name="sec" type="text" class="form-control" id="" placeholder="Security code..." required="required">
+								</div>
+							
+								<div class="form-group">
+									<label for="">Start date</label>
+									<input type="date" name="startDate" id="input" class="form-control" value="" required="required" title="">
+								</div>
+	
+								<div class="form-group">
+									<label for="">End date</label>
+									<input type="date" name="endDate" id="input" class="form-control" value="" required="required" title="">
+								</div>
+	
+								<div class="form-group">
+									<label for="">Data source URL</label>
+									<input type="text" name="dataSourceURL" id="input" class="form-control" placeholder="http://...." required="required" title="">
+								</div>
+							
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									<a id="opt2-return" href="#main"><h5><i class="fa fa-arrow-left"></i> Return Home</h5></a>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: right;">
+									<button id="importSummarySubmit" type="submit" class="btn btn-primary">Submit</button>
+									<input type="reset" value="Reset" class="btn btn-danger">
+								</div>
+								
+							</form>
+						</div>
+						<div id="optionTwoSuccess" class="row element-hidden animated">
+							<h2 class="text-success centered-text">The summary is as following:</h2>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>Event set ID:</strong></p></div>
+								<div class="col-xs-8"><span id="optTwoEventSetId"></span></div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>Security code:</strong></p></div>
+								<div class="col-xs-8"><span id="optTwoSec"></span></div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>Start date:</strong></p></div>
+								<div class="col-xs-8"><span id="optTwoStartDate"></span></div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>End Date:</strong></p></div>
+								<div class="col-xs-8"><span id="optTwoEndDate"></span></div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>Currency code:</strong></p></div>
+								<div class="col-xs-8"><span id="optTwoCurrencyCode"></span></div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>Number of lines:</strong></p></div>
+								<div class="col-xs-8"><span id="optTwoNumberOfLines"></span></div>
+							</div>
+						</div>
+						<div id="optionTwoFailed" class="row element-hidden animated">
+							<h2 class="text-danger centered-text">Oops! Something wrong.</h2>
+							<p id="optTwoErrMsg"></p>
+						</div>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="convertSummary" class="option-3-div element-hidden animated">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<div class="row">
+							<form id="optThreeForm" action="convertSummary" method="POST" role="form">
+								<legend class="centered-text">Convert and summary.</legend>
+							
+								<div class="form-group">
+									<label for="">Event set ID</label>
+									<input name="eventSetId" type="text" class="form-control" id="" placeholder="Event set ID..." required="required">
+								</div>
+						
+								<div class="form-group">
+									<label for="">Target currency</label>
+									<input type="text" name="targetCurrency" id="input" class="form-control" placeholder="Currency..." required="required" title="">
+								</div>
+							
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									<a id="opt3-return" href="#main"><h5><i class="fa fa-arrow-left"></i> Return Home</h5></a>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="text-align: right;">
+									<button id="convertSummarySubmit" type="submit" class="btn btn-primary">Submit</button>
+									<input type="reset" value="Reset" class="btn btn-danger">
+								</div>
+								
+							</form>
+						</div>
+						<div id="optionThreeSuccess" class="row element-hidden animated">
+							<h2 class="text-success centered-text">The summary is as following:</h2>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>Event set ID:</strong></p></div>
+								<div class="col-xs-8"><span id="optThreeEventSetId"></span></div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>Security code:</strong></p></div>
+								<div class="col-xs-8"><span id="optThreeSec"></span></div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>Start date:</strong></p></div>
+								<div class="col-xs-8"><span id="optThreeStartDate"></span></div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>End Date:</strong></p></div>
+								<div class="col-xs-8"><span id="optThreeEndDate"></span></div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>Currency code:</strong></p></div>
+								<div class="col-xs-8"><span id="optThreeCurrencyCode"></span></div>
+							</div>
+							<div class="row">
+								<div class="col-xs-4" style="text-align: right;"><p><strong>Number of lines:</strong></p></div>
+								<div class="col-xs-8"><span id="optThreeNumberOfLines"></span></div>
+							</div>
+						</div>
+						<div id="optionThreeFailed" class="row element-hidden animated">
+							<h2 class="text-danger centered-text">Oops! Something wrong.</h2>
+							<p id="optThreeErrMsg"></p>
+						</div>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- footer start -->
+		<footer>
+			<div class="container">
+				<div class="row">
+					<p class="white-text centered-text">Designed and implemented by group DadImWrong, copyright &copy; Qian Weng (BayMax) and Ran Meng (Null) 2015, CSE @UNSW</p>
+				</div>
+			</div>
+		</footer><!-- footer end -->
+
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+		
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+		
+		<script>
+		/* Initialize wow.js to reveal till scroll */
+		new WOW().init();
+		</script>
+
+		<script>
+		
+		jQuery(document).ready(function() {
+			$('#id-list').load('/9322ass1App/getEventSetIdList', function(responseText, textStatus, jqXHR) {
+			});
+			
+			jQuery('#seeDoc').click(function(e) {
+				e.preventDefault();
+				docPage = this.href;
+				jQuery('body').removeClass('fadeIn');
+				jQuery('body').addClass('fadeOut');
+
+				setTimeout(goToDoc, 800);
+			});
+
+			/* Switch main and option 1 */
+			jQuery('#importConvertDownloadLink').click(function(e) {
+				e.preventDefault();
+				jQuery('#main').removeClass('fadeIn').addClass('fadeOutUp');
+				setTimeout(hideMain, 600);
+				jQuery('#importConvertDownload').removeClass('element-hidden').addClass('element-invisible');
+				setTimeout(revealOptionOne, 800);
+				jQuery('#optionOneSuccess').removeClass('fadeIn').addClass('element-hidden');
+				jQuery('#optionOneFailed').removeClass('bounceIn').addClass('element-hidden');
+			});
+
+			jQuery('#opt1-return').click(function(e) {
+				e.preventDefault();
+				jQuery('#importConvertDownload').removeClass('fadeIn').addClass('fadeOutDown');
+				setTimeout(hideOptionOne, 600);
+				setTimeout(revealMain, 600);
+			});
+
+			function hideMain() {
+				jQuery('#main').addClass('element-hidden');
+			}
+
+			function revealMain() {
+				jQuery('#main').removeClass('element-hidden').addClass('element-invisible');
+				jQuery('#main').removeClass('fadeOutUp').removeClass('element-invisible').addClass('fadeIn');
+			}
+
+			function hideOptionOne() {
+				jQuery('#importConvertDownload').addClass('element-hidden');
+			}
+
+			function revealOptionOne() {
+				jQuery('#importConvertDownload').removeClass('fadeOutDown').removeClass('element-invisible').addClass('fadeIn');
+			}
+			/* Switch main and option 1 end */
+			/* Ajax of accessing web services */
+			$('#optOneForm').submit(function(e) {
+				$('#optionOneSuccess').removeClass('fadeIn').addClass('element-hidden');
+				$('#optionOneFailed').removeClass('bounceIn').addClass('element-hidden');
+				
+				var optOneData = {
+					'sec': $('#optOneForm input[name=sec]').val(),
+					'startDate': $('#optOneForm input[name=startDate]').val(),
+					'endDate': $('#optOneForm input[name=endDate]').val(),
+					'dataSourceURL': $('#optOneForm input[name=dataSourceURL]').val(),
+					'targetCurrency': $('#optOneForm input[name=targetCurrency]').val(),
+					'fileType': $('#optOneForm select[name=fileType]').val()
+				};
+				
+				var formUrl = $(this).attr('action');
+				
+				$.ajax({
+					type: 'POST',
+					url: formUrl,
+					data: optOneData,
+					dataType: 'json',
+					encode: true
+				}).done(function(data) {
+					if (typeof data.errCode === "undefined") { // OK
+						$('#file-link').attr('href', 'http://' + data.dataURL);
+						$('#optionOneSuccess').removeClass('element-hidden').addClass('fadeIn');
+						$('#id-list').text(data.idList);
+					} else {
+						$('#optOneErrMsg').text(data.errorMessage + ' (Error code: "' + data.errCode + '")');
+						$('#optionOneFailed').removeClass('element-hidden').addClass('bounceIn');
+					}
+				});
+				
+				e.preventDefault();
+			});
+			
+			/*
+			 * Option 2 js
+			 */
+			/* Switch main and option 2 start */
+			jQuery('#importSummaryLink').click(function(e) {
+				e.preventDefault();
+				jQuery('#main').removeClass('fadeIn').addClass('fadeOutUp');
+				setTimeout(hideMain, 600);
+				jQuery('#importSummary').removeClass('element-hidden').addClass('element-invisible');
+				setTimeout(revealOptionTwo, 800);
+				jQuery('#optionTwoSuccess').removeClass('fadeIn').addClass('element-hidden');
+				jQuery('#optionTwoFailed').removeClass('bounceIn').addClass('element-hidden');
+			});
+			
+			jQuery('#opt2-return').click(function(e) {
+				e.preventDefault();
+				jQuery('#importSummary').removeClass('fadeIn').addClass('fadeOutDown');
+				setTimeout(hideOptionTwo, 600);
+				setTimeout(revealMain, 600);
+			});
+			
+			function revealOptionTwo() {
+				jQuery('#importSummary').removeClass('fadeOutDown').removeClass('element-invisible').addClass('fadeIn');
+			}
+			
+			function hideOptionTwo() {
+				jQuery('#importSummary').addClass('element-hidden');
+			}
+			
+			/* Switch main and option 2 end */
+			
+			$('#optTwoForm').submit(function(e) {
+				$('#optionTwoSuccess').removeClass('fadeIn').addClass('element-hidden');
+				$('#optionTwoFailed').removeClass('bounceIn').addClass('element-hidden');
+				
+				var optTwoData = {
+					'sec': $('#optTwoForm input[name=sec]').val(),
+					'startDate': $('#optTwoForm input[name=startDate]').val(),
+					'endDate': $('#optTwoForm input[name=endDate]').val(),
+					'dataSourceURL': $('#optTwoForm input[name=dataSourceURL]').val()
+				};
+				
+				var formUrl = $(this).attr('action');
+				
+				$.ajax({
+					type: 'POST',
+					url: formUrl,
+					data: optTwoData,
+					dataType: 'json',
+					encode: true
+				}).done(function(data) {
+					if (typeof data.errCode === "undefined") { // OK
+						$('#optTwoEventSetId').text(data.eventSetId);
+						$('#optTwoSec').text(data.sec);
+						$('#optTwoStartDate').text(data.startDate);
+						$('#optTwoEndDate').text(data.endDate);
+						$('#optTwoCurrencyCode').text(data.currencyCode);
+						$('#optTwoNumberOfLines').text(data.numberOfLines);
+						$('#optionTwoSuccess').removeClass('element-hidden').addClass('fadeIn');
+						
+						$('#id-list').text(data.idList);
+					} else {
+						$('#optTwoErrMsg').text(data.errorMessage + ' (Error code: "' + data.errCode + '")');
+						$('#optionTwoFailed').removeClass('element-hidden').addClass('bounceIn');
+					}
+				});
+				
+				e.preventDefault();
+			});
+
+			/*
+			 * Option 3 js
+			 */
+			/* Switch main and option 2 start */
+			jQuery('#convertSummaryLink').click(function(e) {
+				e.preventDefault();
+				jQuery('#main').removeClass('fadeIn').addClass('fadeOutUp');
+				setTimeout(hideMain, 600);
+				jQuery('#convertSummary').removeClass('element-hidden').addClass('element-invisible');
+				setTimeout(revealOptionThree, 800);
+				jQuery('#optionThreeSuccess').removeClass('fadeIn').addClass('element-hidden');
+				jQuery('#optionThreeFailed').removeClass('bounceIn').addClass('element-hidden');
+			});
+			
+			jQuery('#opt3-return').click(function(e) {
+				e.preventDefault();
+				jQuery('#convertSummary').removeClass('fadeIn').addClass('fadeOutDown');
+				setTimeout(hideOptionThree, 600);
+				setTimeout(revealMain, 600);
+			});
+			
+			function revealOptionThree() {
+				jQuery('#convertSummary').removeClass('fadeOutDown').removeClass('element-invisible').addClass('fadeIn');
+			}
+			
+			function hideOptionThree() {
+				jQuery('#convertSummary').addClass('element-hidden');
+			}
+			
+			/* Switch main and option 2 end */
+			
+			$('#optThreeForm').submit(function(e) {
+				$('#optionThreeSuccess').removeClass('fadeIn').addClass('element-hidden');
+				$('#optionThreeFailed').removeClass('bounceIn').addClass('element-hidden');
+				
+				var optThreeData = {
+					'eventSetId': $('#optThreeForm input[name=eventSetId]').val(),
+					'targetCurrency': $('#optThreeForm input[name=targetCurrency]').val()
+				};
+				
+				var formUrl = $(this).attr('action');
+				
+				$.ajax({
+					type: 'POST',
+					url: formUrl,
+					data: optThreeData,
+					dataType: 'json',
+					encode: true
+				}).done(function(data) {
+					if (typeof data.errCode === "undefined") { // OK
+						$('#optThreeEventSetId').text(data.eventSetId);
+						$('#optThreeSec').text(data.sec);
+						$('#optThreeStartDate').text(data.startDate);
+						$('#optThreeEndDate').text(data.endDate);
+						$('#optThreeCurrencyCode').text(data.currencyCode);
+						$('#optThreeNumberOfLines').text(data.numberOfLines);
+						$('#optionThreeSuccess').removeClass('element-hidden').addClass('fadeIn');
+						$('#id-list').text(data.idList);
+					} else {
+						$('#optThreeErrMsg').text(data.errorMessage + ' (Error code: "' + data.errCode + '")');
+						$('#optionThreeFailed').removeClass('element-hidden').addClass('bounceIn');
+					}
+				});
+				
+				e.preventDefault();
+			}); 
+			
+			function goToDoc() {
+				window.location = docPage;
+			}
+		});
+		</script>
+	</body>
+</html>
