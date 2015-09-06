@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://sltf.unsw.edu.au/marketdatautil"
+	xmlns:ns="http://sltf.unsw.edu.au/marketdatautil" xmlns:tns="http://sltf.unsw.edu.au/marketdatautil">
+	<wsdl:documentation>Web service interface for COMP9322 assignment 1
+		(MarketDataUtilService)
+	</wsdl:documentation>
+	<wsdl:types>
+		<xs:schema attributeFormDefault="qualified"
+			elementFormDefault="qualified" targetNamespace="http://sltf.unsw.edu.au/marketdatautil"
+			xmlns:tns="http://sltf.unsw.edu.au/marketdatautil">
+			<xs:element name="convertMarketDataRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="eventSetId" nillable="false" type="xs:string" />
+						<xs:element name="targetCurrency" nillable="false"
+							type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="convertMarketDataResponseMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="eventSetId" nillable="false" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="summaryMarketDataRequestMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="eventSetId" nillable="false" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="summaryMarketDataResponseMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="eventSetId" nillable="false" type="xs:string" />
+						<xs:element name="sec" nillable="false" type="xs:string" />
+						<xs:element name="startDate" nillable="false" type="xs:string" />
+						<xs:element name="endDate" nillable="false" type="xs:string" />
+						<xs:element name="currencyCode" nillable="false" type="xs:string" />
+						<xs:element name="numberOfLines" nillable="false" type="xs:int" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:simpleType name="MarketDataUtilFaultType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="InvalidCurrencyCode" />
+					<xs:enumeration value="InvalidEventSetId" />
+					<xs:enumeration value="InvalidMarketData" />
+					<xs:enumeration value="ProgramError" />
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="MarketDataUtilFaultMsg">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="faultType" nillable="false"
+							type="tns:MarketDataUtilFaultType"></xs:element>
+						<xs:element name="faultMessage" nillable="false" type="xs:string"></xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="convertMarketDataRequestMsg">
+		<wsdl:part name="parameters" element="ns:convertMarketDataRequestMsg" />
+	</wsdl:message>
+	<wsdl:message name="convertMarketDataResponseMsg">
+		<wsdl:part name="parameters" element="ns:convertMarketDataResponseMsg" />
+	</wsdl:message>
+	<wsdl:message name="summaryMarketDataRequestMsg">
+		<wsdl:part name="parameters" element="ns:summaryMarketDataRequestMsg" />
+	</wsdl:message>
+	<wsdl:message name="summaryMarketDataResponseMsg">
+		<wsdl:part name="parameters" element="ns:summaryMarketDataResponseMsg" />
+	</wsdl:message>
+	<wsdl:message name="MarketDataUtilFaultMsg">
+		<wsdl:part name="parameters" element="ns:MarketDataUtilFaultMsg" />
+	</wsdl:message>
+	<wsdl:portType name="MarketDataUtilServicePortType">
+		<wsdl:operation name="convertMarketData">
+			<wsdl:input message="ns:convertMarketDataRequestMsg"
+				wsaw:Action="urn:convertMarketDataRequestMsg" />
+			<wsdl:output message="ns:convertMarketDataResponseMsg"
+				wsaw:Action="urn:convertMarketDataResponseMsg" />
+			<wsdl:fault name="mainFault" message="ns:MarketDataUtilFaultMsg" />
+		</wsdl:operation>
+		<wsdl:operation name="summaryMarketData">
+			<wsdl:input message="ns:summaryMarketDataRequestMsg"
+				wsaw:Action="urn:summaryMarketDataRequestMsg" />
+			<wsdl:output message="ns:summaryMarketDataResponseMsg"
+				wsaw:Action="urn:summaryMarketDataResponseMsg" />
+			<wsdl:fault name="mainFault" message="ns:MarketDataUtilFaultMsg" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="MarketDataUtilServiceSoap11Binding"
+		type="ns:MarketDataUtilServicePortType">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<wsdl:operation name="convertMarketData">
+			<soap:operation soapAction="urn:convertMarketDataRequestMsg"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="mainFault">
+				<soap:fault name="mainFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="summaryMarketData">
+			<soap:operation soapAction="urn:summaryMarketDataRequestMsg"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="mainFault">
+				<soap:fault name="mainFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="MarketDataUtilService">
+		<wsdl:port name="MarketDataUtilServiceHttpSoap11Endpoint"
+			binding="ns:MarketDataUtilServiceSoap11Binding">
+			<soap:address
+				location="http://localhost:8080/axis2/marketdatautil/MarketDataUtilService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

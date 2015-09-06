@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://sltf.unsw.edu.au/currency" xmlns:ns="http://sltf.unsw.edu.au/currency" xmlns:tns="http://sltf.unsw.edu.au/currency">
+    <wsdl:documentation>Web service interface for COMP9322 assignment 1 (Import and Download) </wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sltf.unsw.edu.au/currency" xmlns:tns="http://sltf.unsw.edu.au/currency">
+            <xs:element name="exchangeRateRequestMsg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="baseCurrencyCode" nillable="false" type="xs:string"/>
+                        <xs:element name="targetCurrencyCode" nillable="false" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="exchangeRateResponseMsg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="rate" nillable="false" type="xs:string"/>
+                        <xs:element name="asAt" nillable="false" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+           <xs:simpleType name="currencyConvertFaultType">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="InvalidCurrencyCode"/>
+                    <xs:enumeration value="InvalidServiceCode"/>
+                    <xs:enumeration value="ProgramError"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="currencyConvertFault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="faultType" nillable="false" type="tns:currencyConvertFaultType"></xs:element>
+                        <xs:element name="faultMessage" nillable="false" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="exchangeRateRequest">
+        <wsdl:part name="parameters" element="ns:exchangeRateRequestMsg"/>
+    </wsdl:message>
+    <wsdl:message name="exchangeRateResponseMsg">
+        <wsdl:part name="parameters" element="ns:exchangeRateResponseMsg"/>
+    </wsdl:message>
+    <wsdl:message name="currencyConvertFault">
+        <wsdl:part name="parameters" element="ns:currencyConvertFault"/>
+    </wsdl:message>
+    <wsdl:portType name="CurrencyConvertServicePortType">
+        <wsdl:operation name="yahooExchangeRate">
+            <wsdl:input message="ns:exchangeRateRequest" wsaw:Action="urn:exchangeRateRequestMsg"/>
+            <wsdl:output message="ns:exchangeRateResponseMsg" wsaw:Action="urn:exchangeRateResponseMsg"/>
+            <wsdl:fault name="mainFault" message="ns:currencyConvertFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="CurrencyConvertServiceSoap11Binding" type="ns:CurrencyConvertServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="yahooExchangeRate">
+            <soap:operation soapAction="urn:exchangeRateRequestMsg" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="mainFault">
+                <soap:fault name="mainFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="CurrencyConvertService">
+        <wsdl:port name="CurrencyConvertServiceHttpSoap11Endpoint" binding="ns:CurrencyConvertServiceSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/currency/CurrencyConvertService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://sltf.unsw.edu.au/services" xmlns:ns="http://sltf.unsw.edu.au/services" xmlns:tns="http://sltf.unsw.edu.au/services">
+    <wsdl:documentation>Web service interface for COMP9322 assignment 1 (Import and Download) </wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sltf.unsw.edu.au/services" xmlns:tns="http://sltf.unsw.edu.au/services">
+            <xs:element name="importMarketData">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="sec" nillable="false" type="xs:string"/>
+                        <xs:element name="startDate" nillable="false" type="xs:string"/>
+                        <xs:element name="endDate" nillable="false" type="xs:string"/>
+                        <xs:element name="dataSourceURL" nillable="false" type="xs:anyURI"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="importMarketDataResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="eventSetId" nillable="false" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="downloadFile">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="eventSetId" nillable="false" type="xs:string"/>
+                        <xs:element name="fileType" nillable="false" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="downloadFileResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="dataURL" nillable="false" type="xs:anyURI"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+           <xs:simpleType name="importDownloadFaultType">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="InvalidEventSetId"/>
+                    <xs:enumeration value="InvalidURL"/>
+                    <xs:enumeration value="InvalidSECCode"/>
+                    <xs:enumeration value="InvalidDates"/>
+                    <xs:enumeration value="InvalidFileType"/>
+                    <xs:enumeration value="ProgramError"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:element name="importDownloadFault">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="faultType" nillable="false" type="tns:importDownloadFaultType"></xs:element>
+                        <xs:element name="faultMessage" nillable="false" type="xs:string"></xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="importMarketDataRequest">
+        <wsdl:part name="parameters" element="ns:importMarketData"/>
+    </wsdl:message>
+    <wsdl:message name="importMarketDataResponse">
+        <wsdl:part name="parameters" element="ns:importMarketDataResponse"/>
+    </wsdl:message>
+    <wsdl:message name="downloadFileRequest">
+        <wsdl:part name="parameters" element="ns:downloadFile"/>
+    </wsdl:message>
+    <wsdl:message name="downloadFileResponse">
+        <wsdl:part name="parameters" element="ns:downloadFileResponse"/>
+    </wsdl:message>
+    <wsdl:message name="importDownloadFault">
+        <wsdl:part name="parameters" element="ns:importDownloadFault"/>
+    </wsdl:message>
+    <wsdl:portType name="ImportDownloadServicesPortType">
+        <wsdl:operation name="importMarketData">
+            <wsdl:input message="ns:importMarketDataRequest" wsaw:Action="urn:importMarketData"/>
+            <wsdl:output message="ns:importMarketDataResponse" wsaw:Action="urn:importMarketDataResponse"/>
+            <wsdl:fault name="mainFault" message="ns:importDownloadFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="downloadFile">
+            <wsdl:input message="ns:downloadFileRequest" wsaw:Action="urn:downloadFile"/>
+            <wsdl:output message="ns:downloadFileResponse" wsaw:Action="urn:downloadFileResponse"/>
+            <wsdl:fault name="mainFault" message="ns:importDownloadFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ImportDownloadServicesSoap11Binding" type="ns:ImportDownloadServicesPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="importMarketData">
+            <soap:operation soapAction="urn:importMarketData" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="mainFault">
+                <soap:fault name="mainFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="downloadFile">
+            <soap:operation soapAction="urn:downloadFile" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="mainFault">
+                <soap:fault name="mainFault" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ImportDownloadServices">
+        <wsdl:port name="ImportDownloadServicesHttpSoap11Endpoint" binding="ns:ImportDownloadServicesSoap11Binding">
+            <soap:address location="http://localhost:8080/axis2/services/ImportDownloadServices"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
